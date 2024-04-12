@@ -13,7 +13,7 @@ public class DebugController : MonoBehaviour
     string _input;
 
     public static DebugCommand<int> PLAYER_SPEED;
-    public static DebugCommand PAUSE_GLITCH;
+    public static DebugCommand DEBUG_TEST;
     public static DebugCommand<string> CONSOLE_TEXT;
 
     public List<object> commandList;
@@ -40,12 +40,12 @@ public class DebugController : MonoBehaviour
 
     private void Awake()
     {
-        /*PLAYER_SPEED = new DebugCommand<int>("player_speed", "Sets the new player speed", "player_speed <speed>", (x) =>
+        DEBUG_TEST = new DebugCommand("debug_test", "Tests Debugger Functionality", "debug_test", () =>
         {
-            _playerStatsController.SetPlayerSpeed(x);
+            Debug.Log("Debugger Is Working! ^^");
         });
 
-        PLAYER_JUMP = new DebugCommand<int>("player_jump", "Sets the new player jump strength", "player_jump <jump_strength>", (x) =>
+        /*PLAYER_JUMP = new DebugCommand<int>("player_jump", "Sets the new player jump strength", "player_jump <jump_strength>", (x) =>
         {
             _playerStatsController.SetPlayerJump(x);
         });
@@ -78,9 +78,7 @@ public class DebugController : MonoBehaviour
 
         commandList = new List<object>
         {
-            PLAYER_SPEED,
-            PAUSE_GLITCH,
-            CONSOLE_TEXT
+            DEBUG_TEST,
         };
     }
 
@@ -90,9 +88,9 @@ public class DebugController : MonoBehaviour
 
         float y = 0f;
 
-        GUI.Box(new Rect(0, y, Screen.width, 30), "");
+        GUI.Box(new Rect(0, y, Screen.width, 100), "");
         GUI.SetNextControlName("console");
-        _input = GUI.TextField(new Rect(10f, y + 5f, Screen.width -20, 20f), _input);
+        _input = GUI.TextField(new Rect(1f, y + 10f, Screen.width -10, 90f), _input);
         GUI.FocusControl("console");
     }
 
